@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Física para UI - Ragdoll Physics</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header com informações do desenvolvedor -->
+    <header class="header">
+        <div class="header-content">
+            <h1>🎯 Simulador de Física para UI</h1>
+            <p>Ragdoll Physics & Interactive Elements</p>
+            <div class="developer-info">
+                <span>© 2025 João Lucas de Oliveira</span>
+                <a href="https://github.com/joaodd2z" target="_blank">GitHub: joaodd2z</a>
+                <span>Email: jl.lucas.oliveira@hotmail.com</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Controles da Simulação -->
+    <div class="controls">
+        <div class="control-group">
+            <button id="addCard" class="btn btn-primary">🃏 Adicionar Carta</button>
+            <button id="addBall" class="btn btn-secondary">⚽ Adicionar Bola</button>
+            <button id="addRagdoll" class="btn btn-special">🤸 Adicionar Ragdoll</button>
+            <button id="addStick" class="btn btn-accent">🏒 Adicionar Bastão</button>
+        </div>
+        <div class="control-group">
+            <button id="createFighter" class="btn btn-warning">🥊 Criar Lutador</button>
+            <button id="startCombat" class="btn btn-success">⚔️ Iniciar Combate</button>
+        </div>
+        <div class="control-group">
+            <button id="clearWorld" class="btn btn-danger">🗑️ Limpar Mundo</button>
+            <button id="toggleGravity" class="btn btn-info">🌍 Alternar Gravidade</button>
+        </div>
+        <div class="physics-info">
+            <span id="objectCount">Objetos: 0</span>
+            <span id="gravityStatus">Gravidade: ON</span>
+        </div>
+    </div>
+
+    <!-- Mundo da Simulação -->
+    <div id="world" class="physics-world">
+        <canvas id="physicsCanvas"></canvas>
+        <div class="world-info">
+            <p>🎮 Clique e arraste os objetos para interagir!</p>
+            <p>🎯 Ragdolls respondem ao movimento do mouse</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Desenvolvido com ❤️ usando Matter.js</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="js/Ragdoll.js"></script>
+    <script src="js/combat_system.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

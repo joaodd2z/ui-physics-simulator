@@ -1,0 +1,47 @@
+{
+  "name": "ui-physics-simulator",
+  "version": "1.0.0",
+  "description": "Simulador interativo de física 2D com ragdolls responsivos ao movimento do mouse",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 3000",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "physics",
+    "simulation",
+    "ragdoll",
+    "matter.js",
+    "interactive",
+    "ui",
+    "javascript",
+    "canvas",
+    "2d-physics",
+    "web-development"
+  ],
+  "author": {
+    "name": "João Lucas de Oliveira",
+    "email": "jl.lucas.oliveira@hotmail.com",
+    "url": "https://github.com/joaodd2z"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joaodd2z/ui-physics-simulator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joaodd2z/ui-physics-simulator/issues"
+  },
+  "homepage": "https://github.com/joaodd2z/ui-physics-simulator#readme",
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
