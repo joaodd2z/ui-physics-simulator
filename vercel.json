@@ -1,17 +1,15 @@
 {
   "version": 2,
-  "builds": [
+  "buildCommand": "echo 'Static site - no build needed'",
+  "outputDirectory": ".",
+  "installCommand": "echo 'No install needed'",
+  "devCommand": "python -m http.server 8000",
+  "framework": null,
+  "public": false,
+  "rewrites": [
     {
-      "src": "**/*",
-      "use": "@vercel/static"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "functions": {},
-  "outputDirectory": "."
+  ]
 }

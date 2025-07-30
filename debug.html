@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - UI Physics Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f0f0f0;
+        }
+        .debug-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .error {
+            color: red;
+            background: #ffe6e6;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+        .success {
+            color: green;
+            background: #e6ffe6;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Debug - UI Physics Simulator</h1>
+    
+    <div class="debug-info">
+        <h2>Teste de Carregamento de Scripts</h2>
+        <div id="script-status"></div>
+    </div>
+    
+    <div class="debug-info">
+        <h2>Teste Matter.js</h2>
+        <div id="matter-status"></div>
+    </div>
+    
+    <div class="debug-info">
+        <h2>Teste Canvas</h2>
+        <canvas id="test-canvas" width="400" height="200" style="border: 1px solid #ccc;"></canvas>
+        <div id="canvas-status"></div>
+    </div>
+    
+    <div class="debug-info">
+        <h2>Console Errors</h2>
+        <div id="console-errors"></div>
+    </div>
+
+    <script>
+        // Capturar erros do console
+        const originalConsoleError = console.error;
+        const errors = [];
+        
+        console.error = function(...args) {
+            errors.push(args.join(' '));
+            originalConsoleError.apply(console, args);
+            updateErrorDisplay();
+        };
+        
+        function updateErrorDisplay() {
+            const errorDiv = document.getElementById('console-errors');
+            if (errors.length > 0) {
+                errorDiv.innerHTML = errors.map(err => `<div class="error">${err}</div>`).join('');
+            } else {
+                errorDiv.innerHTML = '<div class="success">Nenhum erro detectado</div>';
+            }
+        }
+        
+        function updateStatus(elementId, message, isSuccess = true) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="${isSuccess ? 'success' : 'error'}">${message}</div>`;
+        }
+        
+        // Teste básico de canvas
+        try {
+            const canvas = document.getElementById('test-canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#4CAF50';
+            ctx.fillRect(10, 10, 100, 50);
+            ctx.fillStyle = '#2196F3';
+            ctx.fillText('Canvas OK', 120, 35);
+            updateStatus('canvas-status', 'Canvas funcionando corretamente');
+        } catch (error) {
+            updateStatus('canvas-status', `Erro no canvas: ${error.message}`, false);
+        }
+        
+        // Inicializar display de erros
+        updateErrorDisplay();
+        
+        // Teste de carregamento de scripts
+        updateStatus('script-status', 'Debug script carregado com sucesso');
+    </script>
+    
+    <!-- Teste de carregamento do Matter.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script>
+        // Teste Matter.js
+        setTimeout(() => {
+            if (typeof Matter !== 'undefined') {
+                updateStatus('matter-status', `Matter.js carregado com sucesso - Versão: ${Matter.version || 'Desconhecida'}`);
+                
+                // Teste básico do Matter.js
+                try {
+                    const engine = Matter.Engine.create();
+                    const world = engine.world;
+                    updateStatus('matter-status', updateStatus('matter-status').innerHTML + '<br><div class="success">Engine Matter.js criado com sucesso</div>');
+                } catch (error) {
+                    updateStatus('matter-status', `Matter.js carregado mas erro ao criar engine: ${error.message}`, false);
+                }
+            } else {
+                updateStatus('matter-status', 'Erro: Matter.js não foi carregado', false);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
