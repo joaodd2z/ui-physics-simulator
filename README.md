@@ -1,5 +1,7 @@
 # 🎮 Simulador de Física UI
+esse projeto vai ser bem extenso, estou estudando JS e aplicando, como essa linguagem é do capeta eu vou demorar para sincronizar os movimentos e uma inteligência artificial descente para serem aclopados nos personagens (Ragdolls), esse projeto é para treinar o que farei em um projeto maior ainda, para isso, preciso aprender mais sobre o sistema de equilíbrio dos ragdolls, ragdolls é meu foco nesse simulador de física UI, quando estiver perfeito, passarei para o meu querido Jasinho (minha brilhante idéia que não pode morrer).
 
+Então aqui temos: 
 Um simulador de física interativo construído com Matter.js, featuring ragdolls inteligentes, sistema de combate e interações realistas.
 
 ## ✨ Características
